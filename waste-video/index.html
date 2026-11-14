@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/vendor/three.min.js"></script>
     <style>
       :root {
         --ground: #f4efe6;
@@ -30,10 +31,13 @@
         overflow: hidden;
         background: var(--ground);
       }
-      #bg {
+      #world {
         position: absolute;
-        inset: 0;
-        background: var(--ground);
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+        background: #c9dbe8;
       }
     </style>
   </head>
@@ -42,28 +46,39 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="37.5"
+      data-duration="41"
       data-width="1920"
       data-height="1080"
     >
-      <div id="bg"></div>
+      <canvas id="world" width="1920" height="1080"></canvas>
       <div
-        id="problem"
-        data-composition-id="problem"
-        data-composition-src="compositions/problem.html"
+        id="intro"
+        data-composition-id="intro"
+        data-composition-src="compositions/intro.html"
         data-start="0"
-        data-duration="6"
+        data-duration="7"
         data-track-index="1"
         data-track-kind="graphics"
         data-width="1920"
         data-height="1080"
       ></div>
       <div
-        id="connect"
-        data-composition-id="connect"
-        data-composition-src="compositions/connect.html"
-        data-start="6"
-        data-duration="9"
+        id="waste"
+        data-composition-id="waste"
+        data-composition-src="compositions/waste.html"
+        data-start="7.4"
+        data-duration="5.8"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="brand"
+        data-composition-id="brand"
+        data-composition-src="compositions/brand.html"
+        data-start="15.2"
+        data-duration="3.8"
         data-track-index="1"
         data-track-kind="graphics"
         data-width="1920"
@@ -73,19 +88,19 @@
         id="app"
         data-composition-id="app"
         data-composition-src="compositions/app.html"
-        data-start="15"
-        data-duration="13"
+        data-start="19"
+        data-duration="12"
         data-track-index="1"
         data-track-kind="graphics"
         data-width="1920"
         data-height="1080"
       ></div>
       <div
-        id="sides"
-        data-composition-id="sides"
-        data-composition-src="compositions/sides.html"
-        data-start="28"
-        data-duration="4.5"
+        id="pickup"
+        data-composition-id="pickup"
+        data-composition-src="compositions/pickup.html"
+        data-start="32.2"
+        data-duration="4.6"
         data-track-index="1"
         data-track-kind="graphics"
         data-width="1920"
@@ -95,14 +110,15 @@
         id="ending"
         data-composition-id="ending"
         data-composition-src="compositions/ending.html"
-        data-start="32.5"
-        data-duration="5"
+        data-start="37"
+        data-duration="4"
         data-track-index="1"
         data-track-kind="graphics"
         data-width="1920"
         data-height="1080"
       ></div>
     </div>
+    <script src="assets/world.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
       window.__timelines["main"] = gsap.timeline({ paused: true });

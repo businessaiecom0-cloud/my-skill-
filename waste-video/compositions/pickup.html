@@ -1,0 +1,58 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: var(--font);
+      overflow: hidden;
+    }
+    .pk-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 520px;
+      background: linear-gradient(to bottom, rgba(12, 14, 16, 0.78), rgba(12, 14, 16, 0));
+    }
+    .pk-w {
+      display: inline-block;
+    }
+    #pk-copy {
+      position: absolute;
+      left: 140px;
+      top: 100px;
+      width: 1400px;
+    }
+    .pk-big {
+      font-size: 84px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+    .pk-small {
+      margin-top: 16px;
+      font-size: 40px;
+      font-weight: 500;
+      color: #e9e4da;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+  <div id="root" data-composition-id="pk" data-width="1920" data-height="1080">
+    <div id="pk-band" class="pk-band"></div>
+    <div id="pk-copy">
+      <div class="pk-big"><span class="pk-a pk-w">The</span> <span class="pk-a pk-w">truck</span> <span class="pk-a pk-w">arrives.</span> <span class="pk-a pk-w">The</span> <span class="pk-a pk-w">waste</span> <span class="pk-a pk-w">goes.</span></div>
+      <div class="pk-small"><span class="pk-b pk-w">Loaded,</span> <span class="pk-b pk-w">weighed</span> <span class="pk-b pk-w">and</span> <span class="pk-b pk-w">taken</span> <span class="pk-b pk-w">to</span> <span class="pk-b pk-w">the</span> <span class="pk-b pk-w">right</span> <span class="pk-b pk-w">dump</span> <span class="pk-b pk-w">site.</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pk-band", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo(".pk-a", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08, ease: "power4.out" }, 0.3);
+    tl.fromTo(".pk-b", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.07, ease: "power4.out" }, 1.6);
+    tl.to("#pk-copy", { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power2.in" }, 4.25);
+    tl.to("#pk-band", { opacity: 0, duration: 0.3, ease: "power2.in" }, 4.3);
+    window.__timelines["pk"] = tl;
+  </script>
+</template>

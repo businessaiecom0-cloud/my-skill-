@@ -3,9 +3,13 @@
     #root {
       position: absolute;
       inset: 0;
-      background: var(--ground);
       font-family: var(--font);
       overflow: hidden;
+    }
+    #ap-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(12, 14, 16, 0.55), rgba(12, 14, 16, 0.82) 55%, rgba(12, 14, 16, 0.6));
     }
     #ap-phone {
       position: absolute;
@@ -16,7 +20,7 @@
       border-radius: 64px;
       background: var(--ink);
       padding: 16px;
-      box-shadow: 0 40px 80px rgba(27, 29, 31, 0.18);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.45);
     }
     #ap-screen {
       position: relative;
@@ -225,12 +229,13 @@
     .ap-txt {
       font-size: 56px;
       font-weight: 700;
-      color: var(--ink);
+      color: #fff;
       line-height: 1.12;
       letter-spacing: -0.02em;
     }
   </style>
   <div id="root" data-composition-id="app" data-width="1920" data-height="1080">
+    <div id="ap-scrim"></div>
     <svg width="0" height="0" style="position: absolute">
       <defs>
         <symbol id="ap-truck" viewBox="0 0 220 110">
@@ -330,6 +335,7 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     // Phone arrives
+    tl.fromTo("#ap-scrim", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
     tl.fromTo("#ap-phone", { y: 160, opacity: 0, rotation: -4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.9, ease: "expo.out" }, 0);
     tl.fromTo("#ap-scrA", { x: 0 }, { x: 0, duration: 0.01 }, 0);
     tl.fromTo(["#ap-scrB", "#ap-scrC"], { x: 460 }, { x: 460, duration: 0.01 }, 0);
@@ -345,7 +351,7 @@
     // To screen B
     tl.to("#ap-scrA", { x: -460, duration: 0.45, ease: "power3.inOut" }, 3.75);
     tl.to("#ap-scrB", { x: 0, duration: 0.45, ease: "power3.inOut" }, 3.75);
-    tl.to("#ap-step1", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 3.9);
+    tl.to("#ap-step1", { opacity: 0.3, duration: 0.3, ease: "power2.out" }, 3.9);
     tl.fromTo("#ap-step2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 4.0);
     tl.fromTo(".ap-cardx", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, 4.3);
     tl.to("#ap-card1-ring", { opacity: 1, duration: 0.2, ease: "power2.out" }, 5.9);
@@ -353,7 +359,7 @@
     // To screen C
     tl.to("#ap-scrB", { x: -460, duration: 0.45, ease: "power3.inOut" }, 7.05);
     tl.to("#ap-scrC", { x: 0, duration: 0.45, ease: "power3.inOut" }, 7.05);
-    tl.to("#ap-step2", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 7.2);
+    tl.to("#ap-step2", { opacity: 0.3, duration: 0.3, ease: "power2.out" }, 7.2);
     tl.fromTo("#ap-step3", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 7.3);
     // truck drives the route: (40,80) -> (120,80) -> (120,300) -> (300,300) -> (300,340)
     tl.fromTo("#ap-mtruck", { x: 40, y: 80 }, { x: 120, y: 80, duration: 0.6, ease: "power1.in" }, 7.7);
@@ -365,8 +371,9 @@
     tl.to("#ap-st2", { opacity: 1, duration: 0.2, ease: "power2.out" }, 10.75);
     tl.fromTo("#ap-home circle", { attr: { fill: "#FF7A1A" } }, { attr: { fill: "#1FA36B" }, duration: 0.3, ease: "power2.out" }, 10.75);
     // exit
-    tl.to("#ap-steps", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 12.35);
-    tl.to("#ap-phone", { y: -80, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "power3.in" }, 12.45);
+    tl.to("#ap-steps", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 11.3);
+    tl.to("#ap-phone", { y: -80, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "power3.in" }, 11.35);
+    tl.to("#ap-scrim", { opacity: 0, duration: 0.5, ease: "power2.inOut" }, 11.4);
     window.__timelines["app"] = tl;
   </script>
 </template>

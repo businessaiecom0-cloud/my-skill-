@@ -1,0 +1,58 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: var(--font);
+      overflow: hidden;
+    }
+    .in-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 480px;
+      background: linear-gradient(to top, rgba(12, 14, 16, 0.78), rgba(12, 14, 16, 0));
+    }
+    .in-w {
+      display: inline-block;
+    }
+    #in-copy {
+      position: absolute;
+      left: 140px;
+      bottom: 150px;
+      width: 1300px;
+    }
+    .in-big {
+      font-size: 84px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+    .in-small {
+      margin-top: 18px;
+      font-size: 40px;
+      font-weight: 500;
+      color: #e9e4da;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+  </style>
+  <div id="root" data-composition-id="in" data-width="1920" data-height="1080">
+    <div id="in-band" class="in-band"></div>
+    <div id="in-copy">
+      <div id="in-l1" class="in-big"><span class="in-a in-w">Our</span> <span class="in-a in-w">cities</span> <span class="in-a in-w">build</span> <span class="in-a in-w">every</span> <span class="in-a in-w">day.</span></div>
+      <div id="in-l2" class="in-small"><span class="in-b in-w">New</span> <span class="in-b in-w">homes.</span> <span class="in-b in-w">New</span> <span class="in-b in-w">buildings.</span> <span class="in-b in-w">New</span> <span class="in-b in-w">plazas.</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#in-band", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.4);
+    tl.fromTo(".in-a", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08, ease: "power4.out" }, 0.8);
+    tl.fromTo(".in-b", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.1, ease: "power4.out" }, 2.0);
+    tl.to("#in-copy", { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power2.in" }, 6.5);
+    tl.to("#in-band", { opacity: 0, duration: 0.4, ease: "power2.in" }, 6.5);
+    window.__timelines["in"] = tl;
+  </script>
+</template>
