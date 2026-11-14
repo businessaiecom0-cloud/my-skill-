@@ -1,0 +1,372 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: var(--ground);
+      font-family: var(--font);
+      overflow: hidden;
+    }
+    #ap-phone {
+      position: absolute;
+      left: 400px;
+      top: 90px;
+      width: 460px;
+      height: 900px;
+      border-radius: 64px;
+      background: var(--ink);
+      padding: 16px;
+      box-shadow: 0 40px 80px rgba(27, 29, 31, 0.18);
+    }
+    #ap-screen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .ap-scr {
+      position: absolute;
+      inset: 0;
+      padding: 70px 28px 28px;
+    }
+    .ap-h {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+    .ap-sub {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .ap-label {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--muted);
+      margin: 22px 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    #ap-photo {
+      margin-top: 20px;
+      height: 190px;
+      border-radius: 22px;
+      background: #efe7da;
+      position: relative;
+      overflow: hidden;
+    }
+    #ap-photo svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #ap-photo-ok {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--clean-deep);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    #ap-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .ap-chip {
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: 2px solid #d8d2c7;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      background: #fff;
+    }
+    .ap-chip-wrap {
+      position: relative;
+    }
+    #ap-size {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-radius: 18px;
+      background: #f4efe6;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .ap-btn {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 34px;
+      height: 78px;
+      border-radius: 39px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ap-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 14px;
+      margin-top: 16px;
+      border-radius: 22px;
+      border: 3px solid #ebe5da;
+      background: #fff;
+    }
+    .ap-card svg {
+      width: 64px;
+      height: 32px;
+      flex: none;
+    }
+    .ap-card-name {
+      white-space: nowrap;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .ap-card-meta {
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .ap-price {
+      margin-left: auto;
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    #ap-card1-ring {
+      position: absolute;
+      inset: -3px;
+      border-radius: 22px;
+      border: 4px solid var(--accent);
+    }
+    #ap-mapbox {
+      margin-top: 20px;
+      height: 430px;
+      border-radius: 26px;
+      background: #efe9df;
+      position: relative;
+      overflow: hidden;
+    }
+    #ap-mapbox svg {
+      position: absolute;
+      inset: 0;
+    }
+    #ap-status {
+      margin-top: 22px;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: #f4efe6;
+      position: relative;
+      height: 104px;
+    }
+    .ap-st {
+      position: absolute;
+      left: 22px;
+      top: 18px;
+    }
+    .ap-st-big {
+      font-size: 27px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .ap-st-small {
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    #ap-st2 .ap-st-big {
+      color: var(--clean-deep);
+    }
+    #ap-steps {
+      position: absolute;
+      left: 1000px;
+      top: 230px;
+      width: 820px;
+    }
+    .ap-step {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      height: 200px;
+    }
+    .ap-num {
+      flex: none;
+      width: 92px;
+      height: 92px;
+      border-radius: 46px;
+      background: var(--accent-deep);
+      color: #fff;
+      font-size: 46px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ap-txt {
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+  </style>
+  <div id="root" data-composition-id="app" data-width="1920" data-height="1080">
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <symbol id="ap-truck" viewBox="0 0 220 110">
+          <path d="M8 28 H132 L122 80 H18 Z" fill="#FF7A1A" />
+          <path d="M16 38 H126" stroke="#C85A0C" stroke-width="5" />
+          <path d="M138 44 H176 L204 68 V84 H138 Z" fill="#1B1D1F" />
+          <path d="M147 52 H172 L190 67 H147 Z" fill="#BFE3F5" />
+          <rect x="8" y="80" width="198" height="9" rx="3" fill="#1B1D1F" />
+          <circle cx="52" cy="92" r="15" fill="#1B1D1F" /><circle cx="52" cy="92" r="6" fill="#E9E4DA" />
+          <circle cx="170" cy="92" r="15" fill="#1B1D1F" /><circle cx="170" cy="92" r="6" fill="#E9E4DA" />
+        </symbol>
+      </defs>
+    </svg>
+    <div id="ap-phone">
+      <div id="ap-screen">
+        <!-- Screen A: request -->
+        <div id="ap-scrA" class="ap-scr">
+          <div class="ap-h">New pickup</div>
+          <div class="ap-sub">House 24, Street 7</div>
+          <div id="ap-photo">
+            <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMid slice">
+              <path d="M40 190 Q200 40 370 190 Z" fill="#D9B98A" />
+              <rect x="110" y="110" width="70" height="34" rx="4" fill="#B5502F" transform="rotate(-10 145 127)" />
+              <rect x="200" y="96" width="96" height="56" rx="10" fill="#E2DCD0" stroke="#1B1D1F" stroke-width="3" />
+              <text x="248" y="131" text-anchor="middle" font-family="Poppins" font-weight="700" font-size="16" fill="#1B1D1F">CEMENT</text>
+              <circle cx="300" cy="160" r="22" fill="#8C8A85" />
+              <circle cx="90" cy="168" r="16" fill="#A7A39B" />
+            </svg>
+            <div id="ap-photo-ok">Photo added</div>
+          </div>
+          <div class="ap-label">Waste type</div>
+          <div id="ap-chips">
+            <div class="ap-chip-wrap"><div id="ap-on1" class="ap-chip">Cement</div></div>
+            <div class="ap-chip-wrap"><div id="ap-on2" class="ap-chip">Bricks</div></div>
+            <div class="ap-chip-wrap"><div id="ap-on3" class="ap-chip">Sand</div></div>
+            <div class="ap-chip-wrap"><div class="ap-chip">Tiles</div></div>
+            <div class="ap-chip-wrap"><div class="ap-chip">Wood</div></div>
+            <div class="ap-chip-wrap"><div class="ap-chip">Steel</div></div>
+          </div>
+          <div class="ap-label">Load size</div>
+          <div id="ap-size"><span>Half truck</span><span>~2 tons</span></div>
+          <div id="ap-btnA" class="ap-btn">Find transporters</div>
+        </div>
+        <!-- Screen B: offers -->
+        <div id="ap-scrB" class="ap-scr">
+          <div class="ap-h">3 trucks nearby</div>
+          <div class="ap-sub">Offers for your pickup</div>
+          <div id="ap-card1" class="ap-card ap-cardx">
+            <svg viewBox="0 0 220 110"><use href="#ap-truck" /></svg>
+            <div><div class="ap-card-name">Ali Transport</div><div class="ap-card-meta">★ 4.8 · 2 km</div></div>
+            <div class="ap-price">Rs 4,500</div>
+            <div id="ap-card1-ring"></div>
+          </div>
+          <div class="ap-card ap-cardx">
+            <svg viewBox="0 0 220 110"><use href="#ap-truck" /></svg>
+            <div><div class="ap-card-name">Khan Loaders</div><div class="ap-card-meta">★ 4.6 · 3 km</div></div>
+            <div class="ap-price">Rs 5,200</div>
+          </div>
+          <div class="ap-card ap-cardx">
+            <svg viewBox="0 0 220 110"><use href="#ap-truck" /></svg>
+            <div><div class="ap-card-name">City Haulers</div><div class="ap-card-meta">★ 4.9 · 5 km</div></div>
+            <div class="ap-price">Rs 4,900</div>
+          </div>
+          <div id="ap-btnB" class="ap-btn" style="background: var(--accent-deep)">Book Ali Transport</div>
+        </div>
+        <!-- Screen C: tracking -->
+        <div id="ap-scrC" class="ap-scr">
+          <div class="ap-h">On the way</div>
+          <div class="ap-sub">Ali Transport · LEB-2214</div>
+          <div id="ap-mapbox">
+            <svg viewBox="0 0 400 430" width="400" height="430">
+              <g stroke="#fff" stroke-width="22" fill="none" stroke-linecap="round">
+                <path d="M0 80 H400" /><path d="M0 300 H400" /><path d="M120 0 V430" /><path d="M300 0 V430" />
+              </g>
+              <path d="M40 80 H120 V300 H300 V360" stroke="#1B1D1F" stroke-width="7" stroke-dasharray="2 14" stroke-linecap="round" fill="none" />
+              <path id="ap-route" d="M40 80 H120 V300 H300 V360" stroke="#FF7A1A" stroke-width="8" stroke-linecap="butt" stroke-linejoin="round" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" />
+              <g id="ap-home">
+                <circle cx="300" cy="372" r="30" fill="#FF7A1A" />
+                <path d="M286 376 L300 362 L314 376 V388 H286 Z" fill="#fff" />
+              </g>
+              <g id="ap-mtruck"><use href="#ap-truck" x="-34" y="-17" width="68" height="34" /></g>
+            </svg>
+          </div>
+          <div id="ap-status">
+            <div id="ap-st1" class="ap-st"><div class="ap-st-big">Arriving in 12 min</div><div class="ap-st-small">Driver is on the way</div></div>
+            <div id="ap-st2" class="ap-st"><div class="ap-st-big">Waste picked up ✓</div><div class="ap-st-small">Your site is clear</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="ap-steps">
+      <div id="ap-step1" class="ap-step"><div class="ap-num">1</div><div class="ap-txt">Snap a photo.<br />Choose the waste.</div></div>
+      <div id="ap-step2" class="ap-step"><div class="ap-num">2</div><div class="ap-txt">Pick a truck<br />near you.</div></div>
+      <div id="ap-step3" class="ap-step"><div class="ap-num">3</div><div class="ap-txt">Track it.<br />Your site is clear.</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Phone arrives
+    tl.fromTo("#ap-phone", { y: 160, opacity: 0, rotation: -4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.9, ease: "expo.out" }, 0);
+    tl.fromTo("#ap-scrA", { x: 0 }, { x: 0, duration: 0.01 }, 0);
+    tl.fromTo(["#ap-scrB", "#ap-scrC"], { x: 460 }, { x: 460, duration: 0.01 }, 0);
+    tl.fromTo(["#ap-card1-ring", "#ap-st2"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    // Step 1
+    tl.fromTo("#ap-step1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
+    tl.fromTo("#ap-photo", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "expo.out" }, 0.9);
+    tl.fromTo("#ap-photo-ok", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.7)" }, 1.4);
+    tl.fromTo("#ap-on1", { backgroundColor: "#ffffff", color: "#1B1D1F", borderColor: "#d8d2c7" }, { backgroundColor: "#A94705", color: "#ffffff", borderColor: "#A94705", duration: 0.2, ease: "power2.out" }, 1.9);
+    tl.fromTo("#ap-on2", { backgroundColor: "#ffffff", color: "#1B1D1F", borderColor: "#d8d2c7" }, { backgroundColor: "#A94705", color: "#ffffff", borderColor: "#A94705", duration: 0.2, ease: "power2.out" }, 2.25);
+    tl.fromTo("#ap-on3", { backgroundColor: "#ffffff", color: "#1B1D1F", borderColor: "#d8d2c7" }, { backgroundColor: "#A94705", color: "#ffffff", borderColor: "#A94705", duration: 0.2, ease: "power2.out" }, 2.6);
+    tl.fromTo("#ap-btnA", { scale: 1 }, { scale: 0.94, duration: 0.1, ease: "power2.in", yoyo: true, repeat: 1 }, 3.4);
+    // To screen B
+    tl.to("#ap-scrA", { x: -460, duration: 0.45, ease: "power3.inOut" }, 3.75);
+    tl.to("#ap-scrB", { x: 0, duration: 0.45, ease: "power3.inOut" }, 3.75);
+    tl.to("#ap-step1", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 3.9);
+    tl.fromTo("#ap-step2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 4.0);
+    tl.fromTo(".ap-cardx", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, ease: "expo.out" }, 4.3);
+    tl.to("#ap-card1-ring", { opacity: 1, duration: 0.2, ease: "power2.out" }, 5.9);
+    tl.fromTo("#ap-btnB", { scale: 1 }, { scale: 0.94, duration: 0.1, ease: "power2.in", yoyo: true, repeat: 1 }, 6.7);
+    // To screen C
+    tl.to("#ap-scrB", { x: -460, duration: 0.45, ease: "power3.inOut" }, 7.05);
+    tl.to("#ap-scrC", { x: 0, duration: 0.45, ease: "power3.inOut" }, 7.05);
+    tl.to("#ap-step2", { opacity: 0.25, duration: 0.3, ease: "power2.out" }, 7.2);
+    tl.fromTo("#ap-step3", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 7.3);
+    // truck drives the route: (40,80) -> (120,80) -> (120,300) -> (300,300) -> (300,340)
+    tl.fromTo("#ap-mtruck", { x: 40, y: 80 }, { x: 120, y: 80, duration: 0.6, ease: "power1.in" }, 7.7);
+    tl.to("#ap-mtruck", { x: 120, y: 300, duration: 1.0, ease: "none" }, 8.3);
+    tl.to("#ap-mtruck", { x: 300, y: 300, duration: 0.85, ease: "none" }, 9.3);
+    tl.to("#ap-mtruck", { x: 300, y: 330, duration: 0.35, ease: "power2.out" }, 10.15);
+    tl.to("#ap-route", { strokeDashoffset: 0, duration: 2.8, ease: "none" }, 7.7);
+    tl.to("#ap-st1", { opacity: 0, filter: "blur(6px)", duration: 0.15, ease: "power2.in" }, 10.6);
+    tl.to("#ap-st2", { opacity: 1, duration: 0.2, ease: "power2.out" }, 10.75);
+    tl.fromTo("#ap-home circle", { attr: { fill: "#FF7A1A" } }, { attr: { fill: "#1FA36B" }, duration: 0.3, ease: "power2.out" }, 10.75);
+    // exit
+    tl.to("#ap-steps", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 12.35);
+    tl.to("#ap-phone", { y: -80, opacity: 0, filter: "blur(10px)", duration: 0.4, ease: "power3.in" }, 12.45);
+    window.__timelines["app"] = tl;
+  </script>
+</template>

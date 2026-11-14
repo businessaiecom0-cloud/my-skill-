@@ -1,0 +1,173 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: var(--font);
+      overflow: hidden;
+    }
+    #cn-light {
+      position: absolute;
+      inset: 0;
+      background: var(--ground);
+    }
+    #cn-dark {
+      position: absolute;
+      inset: 0;
+      background: var(--night);
+    }
+    #cn-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(122, 117, 108, 0.35) 2px, transparent 2.5px);
+      background-size: 48px 48px;
+    }
+    #cn-map {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #cn-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 130px;
+      text-align: center;
+      font-size: 78px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .cn-w {
+      display: inline-block;
+    }
+    .cn-chip {
+      position: absolute;
+      padding: 14px 28px;
+      border-radius: 40px;
+      background: #fff;
+      border: 3px solid var(--ink);
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    #cn-chip1 {
+      left: 1040px;
+      top: 470px;
+    }
+    #cn-chip2 {
+      left: 640px;
+      top: 700px;
+    }
+    #cn-chip3 {
+      left: 1060px;
+      top: 690px;
+    }
+    #cn-brand {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 110px;
+      text-align: center;
+      color: #fff;
+    }
+    #cn-name {
+      font-size: 120px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    #cn-name .cn-hi {
+      color: var(--accent);
+    }
+    #cn-tag {
+      margin-top: 12px;
+      font-size: 40px;
+      font-weight: 500;
+      color: #d9d3c8;
+    }
+  </style>
+  <div id="root" data-composition-id="connect" data-width="1920" data-height="1080">
+    <div id="cn-light"></div>
+    <div id="cn-dark"></div>
+    <div id="cn-grid"></div>
+    <svg id="cn-map" viewBox="0 0 1920 1080">
+      <defs>
+        <symbol id="cn-truck" viewBox="0 0 220 110">
+          <path d="M8 28 H132 L122 80 H18 Z" fill="#FF7A1A" />
+          <path d="M16 38 H126" stroke="#C85A0C" stroke-width="5" />
+          <path d="M138 44 H176 L204 68 V84 H138 Z" fill="#3A3D42" />
+          <path d="M147 52 H172 L190 67 H147 Z" fill="#BFE3F5" />
+          <rect x="8" y="80" width="198" height="9" rx="3" fill="#3A3D42" />
+          <circle cx="52" cy="92" r="15" fill="#2A2C30" /><circle cx="52" cy="92" r="6" fill="#E9E4DA" />
+          <circle cx="170" cy="92" r="15" fill="#2A2C30" /><circle cx="170" cy="92" r="6" fill="#E9E4DA" />
+        </symbol>
+      </defs>
+      <g id="cn-lines" stroke="#FF7A1A" stroke-width="6" stroke-linecap="round" fill="none">
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="430" y2="420" />
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="560" y2="880" />
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="1430" y2="420" />
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="1500" y2="860" />
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="250" y2="660" />
+        <line class="cn-link" pathLength="1" x1="960" y1="620" x2="1700" y2="610" />
+      </g>
+      <g class="cn-truck"><use href="#cn-truck" x="370" y="385" width="120" height="60" /></g>
+      <g class="cn-truck"><use href="#cn-truck" x="500" y="845" width="120" height="60" /></g>
+      <g class="cn-truck"><use href="#cn-truck" x="1370" y="385" width="120" height="60" /></g>
+      <g class="cn-truck"><use href="#cn-truck" x="1440" y="825" width="120" height="60" /></g>
+      <g class="cn-truck"><use href="#cn-truck" x="190" y="625" width="120" height="60" /></g>
+      <g class="cn-truck"><use href="#cn-truck" x="1640" y="575" width="120" height="60" /></g>
+      <g id="cn-pin">
+        <circle id="cn-pulse" cx="960" cy="620" r="70" fill="#FF7A1A" opacity="0.18" />
+        <circle cx="960" cy="620" r="52" fill="#FF7A1A" />
+        <path d="M934 626 L960 600 L986 626 V646 H934 Z" fill="#fff" />
+        <rect x="953" y="630" width="14" height="16" fill="#FF7A1A" />
+      </g>
+    </svg>
+    <div id="cn-title">
+      <span class="cn-w">Finding</span> <span class="cn-w">a</span> <span class="cn-w">truck</span> <span class="cn-w">takes</span> <span class="cn-w">days.</span>
+    </div>
+    <div id="cn-chip1" class="cn-chip">12 phone calls</div>
+    <div id="cn-chip2" class="cn-chip">No answer</div>
+    <div id="cn-chip3" class="cn-chip">Price too high</div>
+    <div id="cn-brand">
+      <div id="cn-name">Debris<span class="cn-hi">Link</span></div>
+      <div id="cn-tag">Connects your site with nearby transporters.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Phase A: the old way
+    tl.fromTo("#cn-dark", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#cn-grid", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0);
+    tl.fromTo("#cn-pin", { scale: 0, transformOrigin: "960px 620px" }, { scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.15);
+    tl.fromTo(".cn-truck", { opacity: 0, y: 20 }, { opacity: 0.35, y: 0, duration: 0.5, stagger: 0.07, ease: "expo.out" }, 0.4);
+    tl.fromTo(
+      "#cn-title .cn-w",
+      { opacity: 0, filter: "blur(6px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08, ease: "power4.out" },
+      0.5,
+    );
+    tl.fromTo(".cn-link", { strokeDashoffset: 1, strokeDasharray: 1, opacity: 1 }, { strokeDashoffset: 1, duration: 0.01 }, 0);
+    tl.fromTo("#cn-chip1", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 1.5);
+    tl.fromTo("#cn-chip2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 2.0);
+    tl.fromTo("#cn-chip3", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.7)" }, 2.5);
+    // exit phase A
+    tl.to(["#cn-chip1", "#cn-chip2", "#cn-chip3", "#cn-title"], { opacity: 0, filter: "blur(8px)", duration: 0.2, stagger: 0.04, ease: "power2.in" }, 3.9);
+    // Phase B: colour flood, everything connects
+    tl.to("#cn-dark", { opacity: 1, duration: 0.45, ease: "power2.inOut" }, 4.2);
+    tl.to(".cn-link", { strokeDashoffset: 0, duration: 0.55, stagger: 0.08, ease: "power3.out" }, 4.6);
+    tl.to(".cn-truck", { opacity: 1, duration: 0.3, stagger: 0.08, ease: "power2.out" }, 4.85);
+    tl.fromTo("#cn-pulse", { attr: { r: 52 } }, { attr: { r: 90 }, duration: 0.8, ease: "expo.out" }, 4.6);
+    tl.fromTo("#cn-name", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 5.5);
+    tl.fromTo("#cn-tag", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.9);
+    // exit
+    tl.to("#cn-brand", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 8.45);
+    tl.to(["#cn-map", "#cn-grid"], { opacity: 0, duration: 0.3, ease: "power2.in" }, 8.55);
+    tl.to("#cn-dark", { opacity: 0, duration: 0.35, ease: "power2.inOut" }, 8.6);
+    window.__timelines["connect"] = tl;
+  </script>
+</template>

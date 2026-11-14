@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: var(--ground);
+      font-family: var(--font);
+      overflow: hidden;
+    }
+    #en-ground {
+      position: absolute;
+      left: 140px;
+      width: 1640px;
+      top: 828px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--ink);
+      opacity: 0.12;
+    }
+    #en-site {
+      position: absolute;
+      left: 180px;
+      top: 250px;
+      width: 820px;
+      height: 580px;
+    }
+    #en-truck {
+      position: absolute;
+      left: 0;
+      top: 676px;
+      width: 330px;
+      height: 165px;
+    }
+    #en-copy {
+      position: absolute;
+      left: 1080px;
+      top: 330px;
+      width: 720px;
+    }
+    .en-line {
+      font-size: 82px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .en-green {
+      color: var(--clean-deep);
+    }
+    #en-brand {
+      margin-top: 56px;
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    #en-brand span {
+      color: var(--accent-deep);
+    }
+    #en-soon {
+      margin-top: 6px;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+  </style>
+  <div id="root" data-composition-id="ending" data-width="1920" data-height="1080">
+    <div id="en-ground"></div>
+    <svg id="en-site" viewBox="0 0 820 580">
+      <g id="en-house">
+        <path d="M90 214 L310 70 L530 214 Z" fill="#D8CCB8" stroke="#1B1D1F" stroke-width="6" stroke-linejoin="round" />
+        <rect x="120" y="210" width="380" height="368" fill="#E8DFD0" stroke="#1B1D1F" stroke-width="6" />
+        <rect x="165" y="260" width="90" height="80" fill="#BFE3F5" stroke="#1B1D1F" stroke-width="5" />
+        <rect x="365" y="260" width="90" height="80" fill="#BFE3F5" stroke="#1B1D1F" stroke-width="5" />
+        <rect x="268" y="440" width="84" height="138" fill="#8A6A4E" stroke="#1B1D1F" stroke-width="5" />
+      </g>
+      <g id="en-tick">
+        <circle cx="680" cy="430" r="62" fill="#1FA36B" />
+        <path d="M652 432 L672 452 L710 412" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      </g>
+    </svg>
+    <svg id="en-truck" viewBox="0 0 220 110">
+      <path d="M20 30 Q70 2 126 30 Z" fill="#8C8A85" />
+      <rect x="40" y="14" width="30" height="14" rx="2" fill="#B5502F" transform="rotate(-12 55 21)" />
+      <path d="M8 28 H132 L122 80 H18 Z" fill="#FF7A1A" />
+      <path d="M16 38 H126" stroke="#C85A0C" stroke-width="5" />
+      <path d="M138 44 H176 L204 68 V84 H138 Z" fill="#1B1D1F" />
+      <path d="M147 52 H172 L190 67 H147 Z" fill="#BFE3F5" />
+      <rect x="8" y="80" width="198" height="9" rx="3" fill="#1B1D1F" />
+      <circle cx="52" cy="92" r="15" fill="#1B1D1F" /><circle cx="52" cy="92" r="6" fill="#E9E4DA" />
+      <circle cx="170" cy="92" r="15" fill="#1B1D1F" /><circle cx="170" cy="92" r="6" fill="#E9E4DA" />
+    </svg>
+    <div id="en-copy">
+      <div id="en-l1" class="en-line en-green">Clean site.</div>
+      <div id="en-l2" class="en-line">Fair ride.</div>
+      <div id="en-brand">Debris<span>Link</span></div>
+      <div id="en-soon">Construction waste pickup, made simple.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#en-house", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 0);
+    // loaded truck drives past the house and off the right edge of the site
+    tl.fromTo("#en-truck", { x: -360 }, { x: 1000, duration: 2.2, ease: "power1.inOut" }, 0.1);
+    tl.to("#en-truck", { opacity: 0, duration: 0.3, ease: "power2.in" }, 2.0);
+    tl.fromTo("#en-tick", { scale: 0, transformOrigin: "680px 430px" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 1.6);
+    tl.fromTo("#en-l1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.9);
+    tl.fromTo("#en-l2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.35);
+    tl.fromTo("#en-brand", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, 2.1);
+    tl.fromTo("#en-soon", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.out" }, 2.4);
+    window.__timelines["ending"] = tl;
+  </script>
+</template>

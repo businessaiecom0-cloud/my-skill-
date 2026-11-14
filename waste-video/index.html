@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --ground: #f4efe6;
+        --ink: #1b1d1f;
+        --muted: #625d55;
+        --accent: #ff7a1a;
+        --accent-dark: #c85a0c;
+        --accent-deep: #a94705;
+        --clean-deep: #157a4f;
+        --clean: #1fa36b;
+        --night: #16181b;
+        --font: "Poppins", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--ground);
+      }
+      #bg {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="37.5"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="bg"></div>
+      <div
+        id="problem"
+        data-composition-id="problem"
+        data-composition-src="compositions/problem.html"
+        data-start="0"
+        data-duration="6"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="connect"
+        data-composition-id="connect"
+        data-composition-src="compositions/connect.html"
+        data-start="6"
+        data-duration="9"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="app"
+        data-composition-id="app"
+        data-composition-src="compositions/app.html"
+        data-start="15"
+        data-duration="13"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="sides"
+        data-composition-id="sides"
+        data-composition-src="compositions/sides.html"
+        data-start="28"
+        data-duration="4.5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="ending"
+        data-composition-id="ending"
+        data-composition-src="compositions/ending.html"
+        data-start="32.5"
+        data-duration="5"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>
